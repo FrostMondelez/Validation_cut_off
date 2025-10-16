@@ -4,7 +4,7 @@ import pandas as pd
 from Funciones_validacion_Cut_off import validar_reglas_manual_file_cut_off
 
 st.title("Validador Automático de Archivos Manual file Cut Off")
-archivo = st.file_uploader("📂 Carga tu archivo Excel", type=["xlsx","csv"])
+archivo = st.file_uploader("📂 Carga tu archivo csv", type=["xlsx","csv"])
 if archivo:
    df = pd.read_csv(archivo, sep=";", dtype=str)
    st.success("✅ Archivo cargado correctamente")
@@ -25,5 +25,6 @@ if archivo:
                mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
 
            )
+
 
 
