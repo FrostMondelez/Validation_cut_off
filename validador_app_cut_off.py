@@ -3,6 +3,7 @@ import pandas as pd
 # Importa tu función de validación
 from Funciones_validacion_Cut_off import validar_reglas_manual_file_cut_off
 
+st.set_page_config(page_title="Validador Automático Cut Off", layout="wide")
 st.title("Validador Automático de Archivos Manual file Cut Off")
 archivo = st.file_uploader("📂 Carga tu archivo csv", type=["xlsx","csv"])
 if archivo:
@@ -25,6 +26,7 @@ if archivo:
                mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
 
            )
+
 
 
 
