@@ -91,19 +91,19 @@ def validar_reglas_manual_file_cut_off(df, nombre_archivo):
                errores += 1
                for idx, row in no_validos.iterrows():
                    add(col, 'Formato inválido', f'Fila {idx+2} / {col} = {row[col]}')
-   # 6. Validación del año (Year) - debe ser 'YYYY' y = 2025
+   # 6. Validación del año (Year) - debe ser 'YYYY' y = 2026
    if 'Year' in df.columns:
        year_str = df['Year'].astype(str).str.strip()
        es_yyyy = year_str.str.fullmatch(r'\d{4}', na=False)
        year_num = pd.to_numeric(year_str, errors='coerce')
-       es_2025 = year_num.eq(2025)
-       years_invalidos = df[~(es_yyyy & es_2025)]
+       es_2026 = year_num.eq(2026)
+       years_invalidos = df[~(es_yyyy & es_2026)]
        if not years_invalidos.empty:
            errores += 1
            filas = (years_invalidos.index + 2).tolist()
-           add('Year', 'Error', f'Años no válidos o distintos de 2025', f'Filas: {filas}')
+           add('Year', 'Error', f'Años no válidos o distintos de 2026', f'Filas: {filas}')
        else:
-           add('Year', 'OK', 'Formato y valor de año correcto', '2025 válido')
+           add('Year', 'OK', 'Formato y valor de año correcto', '2026 válido')
    # 7. Validación del mes (Month) - solo 1..12 (acepta 01..09)
    if 'Month' in df.columns:
        month_str = df['Month'].astype(str).str.strip()
@@ -133,3 +133,4 @@ def validar_reglas_manual_file_cut_off(df, nombre_archivo):
    add('Resultado general', estado, None, regla ="Consolidado")
 
    return pd.DataFrame(resultados)
+
